@@ -12,7 +12,7 @@ data class Task (
     val name : String,
     val important : Boolean,
     val completed : Boolean,
-    private val created : Long = System.currentTimeMillis(),
+     val created : Long = System.currentTimeMillis(),
     //i will automatically check the
     @PrimaryKey(autoGenerate = true) val id : Int = 0
 
