@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 interface TaskDao {
 
     //query will return all task in aur task table.
-    @Query("SELECT * FROM task_table")
-    fun getTasks() : Flow<List<Task>>//to get data outOf db
+    @Query("SELECT * FROM task_table WHERE name LIKE '%'||:searchQuery ||'%' ORDER BY important DESC")
+    fun getTasks(searchQuery: String) : Flow<List<Task>>//to get data outOf db
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(task : Task)
